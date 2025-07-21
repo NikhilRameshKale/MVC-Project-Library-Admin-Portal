@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <style>
+        body {
+            background-color: #f9fafb; 
+            font-family: Arial, sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: #4b5563; 
+        }
+
+        .input-group {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #6b7280; 
+            }
+
+            .input-group input {
+                width: 370px;
+                padding: 0.75rem;
+                border: 1px solid #d1d5db;
+                border-radius: 0.375rem;
+                font-size: 1rem;
+                color: #1f2937; 
+            }
+
+                .input-group input:focus {
+                    outline: none;
+                    border-color: #3b82f6; 
+                    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); 
+                }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .submit-button:hover {
+                background-color: #2563eb; 
+            }
+
+        .error-message {
+            color: #ef4444; 
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Library Management System</h2>
+        <p class="login-subtitle">Please sign in to your admin account</p>
+        <form id="login-form" action="/Default/Login" method="POST">
+
+            <div class="input-group">
+                @*<label for="username">Username</label>*@
+                <input id="username" name="username" type="text" required placeholder="Username" aria-label="Username" autocomplete="off">
+            </div>
+            <div class="input-group">
+                @*<label for="password">Password</label>*@
+                <input id="password" name="password" type="password" required placeholder="Password" aria-label="Password" autocomplete="off">
+            </div>
+            <button type="submit" class="submit-button">Sign in</button>
+            <div id="login-error" class="error-message">Invalid username or password</div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-message" style="display:block;">@ViewBag.Error</div>
+            }
+        </form>
+       
+
+    </div>
+</body>
+
+</html>
+
+
